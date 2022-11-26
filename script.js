@@ -2,7 +2,7 @@ const juego = {
     timerId: 0,
     gravedad: 2,
     // 1. Agrega skyHeight
-    
+    skyHeight: 580,
   
     aleatorio: function (min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
@@ -19,14 +19,14 @@ const juego = {
      
       bird.dibujar(); 
       // 11. Llama a obstaculos.dibujar();
-      
+      obstaculos.dibujar()
       juego.verificaColision();
     },
   
     iniciar: function () {
       document.addEventListener("keyup", bird.mover);
       // 10. Llama a obstaculos.crear()
-      
+      obstaculos.crear();
       juego.timerId = setInterval(juego.loop, 20);
       
     },
@@ -85,8 +85,7 @@ const juego = {
   
   const obstaculos = {
     // 2. Agrega obstacleContainer
-    
-
+    obstacleContainer: document.querySelector(".obstacles"),
     // 3. Agrega gap
     gap: 200,
 
@@ -105,12 +104,36 @@ const juego = {
     // 8. Agrega crear()
     crear: function () {
      // Agregar código
-    },
-  
+     const topObstacle = document.createElement(".div");
+     const bottomObstacle = document.createElement(".div");
 
+     topObstacle.classList.add("topObstacles");
+     bottomObstacle.classList.add("topObstacles");
+
+     obstaculos.obstacleContainer.appencChild(topObstacle);
+     obstaculos.obstacleContainer.appencChild(bottomObstacle);
+     console.log("creando obstaculos...")
+
+     topObstacleHeight = Math.max(math.random() * obstaculos.maxHeight, obstaculos.minHeight);
+     bottomObstacle = Math.min(juego.skyHeight - topObstacle - obstaculos.gap, obstaculos.maxHeight);
+
+     const parObstaculos = {
+      topObstacle: topObstacle,
+      bottomObstacle: bottomObstacle,
+      left: 500,
+      width: obstaculos.width,
+      TopObstaclebottom: juego.skyHeight - topObstacleHeight,
+      topObstacleHeight: topObstacleHeight,
+      bottomObstaclebottom: 0,
+     }
+
+     obstacles.lista.push(parObstaculos);
+     console.log(obstaculos.lista)
+    },
     // 9. Agrega dibujar()
     dibujar: function () {
        // Agregar codigo
+    bird.div.style.bottom = bird.bottom + "px"
     },
   };
   
